@@ -13,7 +13,7 @@ npm install -g generator-jspm-es6-quick
 Then generate your new project:
 
 ```bash
-yo jspm-es-6-quick
+yo jspm-es6-quick
 ```
 
 ## Getting To Know Yeoman
