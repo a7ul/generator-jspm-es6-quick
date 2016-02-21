@@ -36,6 +36,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_config.js'),
         this.destinationPath('config.js')
       );
+      this.fs.copy(
+        this.templatePath('_.gitignore'),
+        this.destinationPath('.gitignore')
+      );
     },
 
     //Copy application files
