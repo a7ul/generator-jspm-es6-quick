@@ -1,6 +1,6 @@
 # generator-jspm-es6-quick [![NPM version][npm-image]][npm-url]
 
-[![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[[![Dependency Status][daviddm-image]][daviddm-url]
 > yo generator for projects using jspm es6 sass along with optional react or angular or vanilla es6 . Supports live reload . No nonsense . No task runners required. Peace of mind B)
 
 ## Installation

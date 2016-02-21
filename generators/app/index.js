@@ -81,7 +81,7 @@ module.exports = yeoman.generators.Base.extend({
     //Install Dependencies
     install: function() {
       var vm = this;
-      this.npmInstall({
+      this.installDependencies({
         callback:function(){
           vm.spawnCommand('npm', ['run jspminstall']);
         }
