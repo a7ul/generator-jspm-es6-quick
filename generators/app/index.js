@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
       //Defaults to the project's folder name if the input is skipped
       default: this.appname
     }, function(answers) {
-      this.props = answers
+      this.props = answers;
       this.log(answers.name);
       done();
     }.bind(this));
@@ -76,9 +76,10 @@ module.exports = yeoman.generators.Base.extend({
     },
     //Install Dependencies
     install: function() {
-      this.installDependencies({
+      var vm = this;
+      this.npmInstall({
         callback:function(){
-          this.spawnCommand('npm', ['run jspminstall']);
+          vm.spawnCommand('npm', ['run jspminstall']);
         }
       });
     }
