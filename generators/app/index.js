@@ -23,7 +23,6 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
   //Writing Logic here
-  //Writing Logic here
   writing: {
     //Copy the configuration files
     config: function() {
@@ -34,8 +33,8 @@ module.exports = yeoman.generators.Base.extend({
         }
       );
       this.fs.copy(
-        this.templatePath('_config.json'),
-        this.destinationPath('config.json')
+        this.templatePath('_config.js'),
+        this.destinationPath('config.js')
       );
     },
 
