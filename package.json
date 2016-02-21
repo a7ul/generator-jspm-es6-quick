@@ -1,0 +1,54 @@
+{
+  "name": "generator-jspm-es6-quick",
+  "version": "0.0.0",
+  "description": "yo generator for projects using jspm es6 sass along with optional react or angular or vanilla es6 . Supports live reload . No nonsense . No task runners required. Peace of mind B) ",
+  "homepage": "http://github.com/master-atul/generator-jspm-es6-quick",
+  "author": {
+    "name": "Atul",
+    "email": "atulanand94@gmail.com",
+    "url": "http://atulr.com"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "yeoman-generator",
+    "es6",
+    "sass",
+    "angular",
+    "react",
+    "vanilla",
+    "simple",
+    "quick",
+    "no nonsense"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.21.1",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "yeoman-assert": "^2.0.0",
+    "eslint-config-xo-space": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "master-atul/generator-jspm-es6-quick",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
+}

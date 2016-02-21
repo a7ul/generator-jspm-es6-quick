@@ -1,0 +1,44 @@
+{
+  "name": "<%= name %>",
+  "version": "1.0.0",
+  "description": "jspm boilerplate es6",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "jspm bundle src/app bundle/main.bundle.js --minify --inject",
+    "serve": "jspm depcache src/app.js && jspm unbundle && browser-sync start --server --files '**/*.*'",
+    "jspminstall":"jspm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/master-atul/jspm-es6.git"
+  },
+  "keywords": [
+    "jspm",
+    "boilerplate",
+    "es6"
+  ],
+  "author": "Atul R <atulanand94@gmail.com> (http://atulr.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/master-atul/jspm-es6/issues"
+  },
+  "homepage": "https://github.com/master-atul/jspm-es6#readme",
+  "jspm": {
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.20",
+      "json": "github:systemjs/plugin-json@^0.1.0",
+      "scss": "github:mobilexag/plugin-sass@^0.2.1",
+      "text": "github:systemjs/plugin-text@^0.0.4"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.9",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "jspm": "^0.16.29"
+  }
+}
