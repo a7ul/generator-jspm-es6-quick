@@ -18,6 +18,14 @@ Then generate your new project:
 yo jspm-es6-quick
 ```
 
+##Features
+
+- ES6 - using babel/traceur (jspm)
+- JSPM - for module loading
+- SASS
+- Live Reload ( via browser-sync using npm scripts)
+- Doesn't Use Gulp or any task runner. Thanks to awesome JSPM :)
+
 ##More Details ?
 
 For more details on how to use the generator checkout
