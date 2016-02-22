@@ -1,6 +1,6 @@
 # generator-jspm-es6-quick [![NPM version][npm-image]][npm-url]
 
-[[![Dependency Status][daviddm-image]][daviddm-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 > yo generator for projects using jspm es6 sass along with optional react or angular or vanilla es6 . Supports live reload . No nonsense . No task runners required. Peace of mind B)
 
 ## Installation
@@ -17,6 +17,13 @@ Then generate your new project:
 ```bash
 yo jspm-es6-quick
 ```
+
+##More Details ?
+
+For more details on how to use the generator checkout
+[https://github.com/master-atul/jspm-es6-boilerplate]:https://github.com/master-atul/jspm-es6-boilerplate
+
+The generator is based on the above project
 
 ## Getting To Know Yeoman
 
