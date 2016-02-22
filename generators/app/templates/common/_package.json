@@ -4,11 +4,11 @@
   "description": "<%= description %>",
   "main": "src/app.js",
   "scripts": {
-    "start":"npm run serve",
+    "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "jspm bundle src/app bundle/main.bundle.js --minify --inject",
     "serve": "jspm depcache src/app.js && jspm unbundle && browser-sync start --server --files '**/*.*'",
-    "jspminstall":"jspm install"
+    "jspminstall": "jspm install"
   },
   "keywords": [
     "jspm",
@@ -18,6 +18,10 @@
   "license": "ISC",
   "jspm": {
     "dependencies": {
+      <% if(framework === 'angular'){ %>
+      "angular": "github:angular/bower-angular@^1.5.0",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.18",
+      <% } %>
       "css": "github:systemjs/plugin-css@^0.1.20",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "scss": "github:mobilexag/plugin-sass@^0.2.1",

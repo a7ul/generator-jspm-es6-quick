@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title><%= name %></title>
+</head>
+
+<% if(framework === 'angular'){ %>
+  <body ng-app="<%= name %>">
+    <ui-view></ui-view>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.import('src/app.js');
+    </script>
+  </body>
+<% } else { %>
+  <body>
+    <%= name %> by <%= author %>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.import('src/app.js');
+    </script>
+  </body>
+
+<% }%>
+
+</html>

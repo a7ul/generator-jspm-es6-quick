@@ -30,7 +30,13 @@ module.exports = yeoman.generators.Base.extend({
       name: 'name',
       message: 'Your project name',
       //Defaults to the project's folder name if the input is skipped
-      default: 'appname'
+      default: 'testApp',
+      validate: function(choice) {
+        return (choice.indexOf(' ') === -1) ? true : (function() {
+          console.log('\nNo space in name ! Enter again !');
+          return false;
+        }());
+      }
     }, {
       type: 'input',
       name: 'description',
@@ -41,10 +47,17 @@ module.exports = yeoman.generators.Base.extend({
       name: 'author',
       message: 'Author',
       default: vm.user.git.name() + ' <' + vm.user.git.email() + '>'
+    }, {
+      type: 'list',
+      name: 'framework',
+      message: 'Choose the framework / library ? ',
+      choices: ['angular','no framework - just es6'],
+      default: 'no framework - just es6'
     }];
 
     this.prompt(prompts, function(answers) {
       vm.props = answers;
+      console.log(answers);
       done();
     }.bind(this));
   },
@@ -53,20 +66,25 @@ module.exports = yeoman.generators.Base.extend({
     //Copy the configuration files
     config: function() {
       this.fs.copyTpl(
-        this.templatePath('_package.json'),
+        this.templatePath('common/_package.json'),
         this.destinationPath('package.json'), {
           name: this.props.name,
           description: this.props.description,
-          author: this.props.author
+          author: this.props.author,
+          framework: this.props.framework
         }
       );
       this.fs.copy(
-        this.templatePath('_config.js'),
+        this.templatePath('common/_config.js'),
         this.destinationPath('config.js')
       );
       this.fs.copy(
-        this.templatePath('_.gitignore'),
+        this.templatePath('common/_.gitignore'),
         this.destinationPath('.gitignore')
+      );
+      this.fs.copy(
+        this.templatePath('common/.jshintrc'),
+        this.destinationPath('.jshintrc')
       );
     },
 
@@ -74,38 +92,75 @@ module.exports = yeoman.generators.Base.extend({
     app: function() {
       //index file
       this.fs.copyTpl(
-        this.templatePath('_index.html'),
+        this.templatePath('common/_index.html'),
         this.destinationPath('index.html'), {
           name: this.props.name,
-          author: this.props.author
+          author: this.props.author,
+          framework: this.props.framework
         }
       );
       /////favicon
       this.fs.copy(
-        this.templatePath('_favicon.ico'),
+        this.templatePath('common/_favicon.ico'),
         this.destinationPath('favicon.ico'));
 
 
       // app.js
       this.fs.copy(
-        this.templatePath('_src/_app.js'),
+        this.templatePath('common/_src/_app.js'),
         this.destinationPath('src/app.js'));
 
-      // scripts
-      this.fs.copy(
-        this.templatePath('_src/_scripts/_main.js'),
-        this.destinationPath('src/scripts/main.js')
-      );
+      if (this.props.framework === 'angular') {
+        this.fs.copyTpl(
+          this.templatePath('angular/_src/_scripts/_main.js'),
+          this.destinationPath('src/scripts/main.js'),{
+            name: this.props.name
+          }
+        );
+        this.fs.copy(
+          this.templatePath('angular/_src/_scripts/_main.router.js'),
+          this.destinationPath('src/scripts/main.router.js')
+        );
+        this.fs.copy(
+          this.templatePath('angular/_src/_scripts/_controllers/_mainController.js'),
+          this.destinationPath('src/scripts/controllers/mainController.js')
+        );
+        this.fs.copy(
+          this.templatePath('angular/_src/_scripts/_controllers/_aboutController.js'),
+          this.destinationPath('src/scripts/controllers/aboutController.js')
+        );
+      } else {
+        // scripts
+        this.fs.copy(
+          this.templatePath('common/_src/_scripts/_main.js'),
+          this.destinationPath('src/scripts/main.js')
+        );
+      }
 
       // styles
       this.fs.copy(
-        this.templatePath('_src/_styles/__test.scss'),
+        this.templatePath('common/_src/_styles/__test.scss'),
         this.destinationPath('src/styles/_test.scss')
       );
       this.fs.copy(
-        this.templatePath('_src/_styles/_main.scss'),
+        this.templatePath('common/_src/_styles/_main.scss'),
         this.destinationPath('src/styles/main.scss')
       );
+
+      if (this.props.framework === 'angular') {
+        this.fs.copy(
+          this.templatePath('angular/_assets/_views/_main.html'),
+          this.destinationPath('assets/views/main.html')
+        );
+        this.fs.copy(
+          this.templatePath('angular/_assets/_views/_about.html'),
+          this.destinationPath('assets/views/about.html')
+        );
+        this.fs.copy(
+          this.templatePath('angular/_assets/_images/dummy.jpg'),
+          this.destinationPath('assets/images/dummy.jpg')
+        );
+      }
     },
     //Install Dependencies
     install: function() {
