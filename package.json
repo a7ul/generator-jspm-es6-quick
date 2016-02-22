@@ -1,6 +1,6 @@
 {
   "name": "generator-jspm-es6-quick",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "yo generator for projects using jspm es6 sass along with optional react or angular or vanilla es6 . Supports live reload . No nonsense . No task runners required. Peace of mind B) ",
   "homepage": "http://github.com/master-atul/generator-jspm-es6-quick",
   "author": {
