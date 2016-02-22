@@ -27,6 +27,36 @@ yo jspm-es6-quick
 - Angular / No Frameworks
 - Doesn't Use Gulp or any task runner. Thanks to awesome JSPM :)
 
+##How to use the generated project
+
+
+
+###To start the app in development mode (No bundling)
+
+`npm run serve`
+
+This launches a development server from browser-sync and watches for any change in files
+
+For managing dependencies,css,etc use jspm
+
+###For production build
+
+`npm run bundle`
+
+This creates a bundle file in bundle/ which is injected in config by jspm. So now jspm uses the bundled file to load the frontend app.
+
+Hence the file system structure remains same for both production and development .. Jspm handles both the workflows seamlessly.
+
+##Notes
+
+The files like JS, CSS,etc which are to be bundled go inside `src/` and are managed using jspm's import and module loaders .
+
+The files like images, assets , html views ,etc which are not to be bundled along are to be kept in `assets/`.
+
+Thus, when we run `npm run bundle` it only creates a bundle of the files in src
+
+I hope this boilerplate serves u well :D
+
 ##More Details ?
 
 For more details on how to use the generator checkout
