@@ -21,7 +21,7 @@ yo jspm-es6-quick
 ##More Details ?
 
 For more details on how to use the generator checkout
-[https://github.com/master-atul/jspm-es6-boilerplate]:https://github.com/master-atul/jspm-es6-boilerplate
+[https://github.com/master-atul/jspm-es6-boilerplate](https://github.com/master-atul/jspm-es6-boilerplate)
 
 The generator is based on the above project
 
