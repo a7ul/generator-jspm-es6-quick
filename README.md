@@ -24,6 +24,7 @@ yo jspm-es6-quick
 - JSPM - for module loading
 - SASS
 - Live Reload ( via browser-sync using npm scripts)
+- Angular / No Frameworks
 - Doesn't Use Gulp or any task runner. Thanks to awesome JSPM :)
 
 ##More Details ?
