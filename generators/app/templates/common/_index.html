@@ -9,16 +9,13 @@
 <% if(framework === 'angular'){ %>
   <body ng-app="<%= name %>">
     <ui-view></ui-view>
-    <script src="jspm_packages/system.js"></script>
-    <script src="jspm.browser.js"></script>
-    <script src="jspm.config.js"></script>
-    <script>
-      System.import('src/app.js');
-    </script>
-  </body>
+<% } else if(framework === 'react'){ %>
+  <body>
+  <div id="react-container"></div>    
 <% } else { %>
   <body>
-    <%= name %> by <%= author %>
+      <%= name %> by <%= author %>
+<% }%>
     <script src="jspm_packages/system.js"></script>
     <script src="jspm.browser.js"></script>
     <script src="jspm.config.js"></script>
@@ -26,7 +23,5 @@
       System.import('src/app.js');
     </script>
   </body>
-
-<% }%>
 
 </html>

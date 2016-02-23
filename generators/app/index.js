@@ -51,7 +51,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'list',
       name: 'framework',
       message: 'Choose the framework / library ? ',
-      choices: ['angular','no framework - just es6'],
+      choices: ['angular', 'react', 'no framework - just es6'],
       default: 'no framework - just es6'
     }];
 
@@ -79,9 +79,11 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('jspm.browser.js')
       );
 
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('common/_jspm.config.js'),
-        this.destinationPath('jspm.config.js')
+        this.destinationPath('jspm.config.js'),{
+          framework:this.props.framework
+        }
       );
 
       this.fs.copy(
@@ -112,14 +114,16 @@ module.exports = yeoman.generators.Base.extend({
 
 
       // app.js
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('common/_src/_app.js'),
-        this.destinationPath('src/app.js'));
+        this.destinationPath('src/app.js'), {
+          framework: this.props.framework
+        });
 
       if (this.props.framework === 'angular') {
         this.fs.copyTpl(
           this.templatePath('angular/_src/_scripts/_main.js'),
-          this.destinationPath('src/scripts/main.js'),{
+          this.destinationPath('src/scripts/main.js'), {
             name: this.props.name
           }
         );
@@ -134,6 +138,17 @@ module.exports = yeoman.generators.Base.extend({
         this.fs.copy(
           this.templatePath('angular/_src/_scripts/_controllers/_aboutController.js'),
           this.destinationPath('src/scripts/controllers/aboutController.js')
+        );
+      } else if (this.props.framework === 'react') {
+        // scripts
+        this.fs.copy(
+          this.templatePath('react/_src/_scripts/_main.jsx'),
+          this.destinationPath('src/scripts/main.jsx')
+        );
+        // scripts
+        this.fs.copy(
+          this.templatePath('react/_src/_scripts/_hello-world.jsx'),
+          this.destinationPath('src/scripts/hello-world.jsx')
         );
       } else {
         // scripts

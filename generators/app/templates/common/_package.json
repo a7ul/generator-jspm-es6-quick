@@ -22,6 +22,9 @@
       <% if(framework === 'angular'){ %>
       "angular": "github:angular/bower-angular@^1.5.0",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.18",
+      <% }else if(framework === 'react'){ %>
+      "react": "npm:react@^0.14.7",
+      "react-dom": "npm:react-dom@^0.14.7",
       <% } %>
       "css": "github:systemjs/plugin-css@^0.1.20",
       "json": "github:systemjs/plugin-json@^0.1.0",
@@ -29,6 +32,10 @@
       "scss": "github:mobilexag/plugin-sass@^0.2.1"
     },
     "devDependencies": {
+      <% if(framework === 'react'){ %>
+      "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@^6.5.2",
+      "core-js": "npm:core-js@^2.1.1",
+      <% } %>
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.5"
     },
     "peerDependencies": {
@@ -43,10 +50,47 @@
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
       "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
     },
     "overrides": {
+    <% if(framework === 'react'){ %>
+      "npm:babel-runtime@5.8.35": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
+      "npm:fbjs@0.6.1": {
+        "dependencies": {}
+      },
+      "npm:react@0.14.7": {
+        "dependencies": {
+          "fbjs": "^0.6.1"
+        },
+        "format": "cjs",
+        "meta": {
+          "*": {
+            "globals": {
+              "process": "process"
+            }
+          }
+        },
+        "map": {
+          "fbjs/lib/ExecutionEnvironment.js": {
+            "production": "@empty"
+          },
+          "./lib/ReactDefaultPerf.js": {
+            "production": "@empty"
+          },
+          "./lib/ReactTestUtils.js": {
+            "production": "@empty"
+          }
+        }
+      },
+    <% } %>
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
