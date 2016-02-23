@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "jspm bundle src/app bundle/main.bundle.js --minify --inject",
+    "bundle": "jspm bundle src/app.js bundle/main.bundle.js --minify --inject",
     "serve": "jspm depcache src/app.js && jspm unbundle && browser-sync start --server --files '**/*.*'",
     "jspminstall": "jspm install"
   },
@@ -16,7 +16,8 @@
   ],
   "author": "<%= author %>",
   "license": "ISC",
-  "jspm": {
+  "jspm":{
+    "name": "app",
     "dependencies": {
       <% if(framework === 'angular'){ %>
       "angular": "github:angular/bower-angular@^1.5.0",
@@ -24,17 +25,45 @@
       <% } %>
       "css": "github:systemjs/plugin-css@^0.1.20",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "scss": "github:mobilexag/plugin-sass@^0.2.1",
-      "text": "github:systemjs/plugin-text@^0.0.4"
+      "text": "github:systemjs/plugin-text@^0.0.4",
+      "scss": "github:mobilexag/plugin-sass@^0.2.1"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "clean-css": "npm:clean-css@^3.4.9",
-      "core-js": "npm:core-js@^1.1.4"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.5"
+    },
+    "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:sass.js@0.9.7": {
+        "map": {
+          "ws": "@empty"
+        },
+        "meta": {
+          "dist/sass.worker.js": {}
+        }
+      }
     }
   },
   "devDependencies": {
-    "jspm": "^0.16.29"
+    "graceful-fs": "^4.1.3",
+    "jspm": "^0.17.0-beta.7"
   }
 }

@@ -75,9 +75,15 @@ module.exports = yeoman.generators.Base.extend({
         }
       );
       this.fs.copy(
-        this.templatePath('common/_config.js'),
-        this.destinationPath('config.js')
+        this.templatePath('common/_jspm.browser.js'),
+        this.destinationPath('jspm.browser.js')
       );
+
+      this.fs.copy(
+        this.templatePath('common/_jspm.config.js'),
+        this.destinationPath('jspm.config.js')
+      );
+
       this.fs.copy(
         this.templatePath('common/_.gitignore'),
         this.destinationPath('.gitignore')
